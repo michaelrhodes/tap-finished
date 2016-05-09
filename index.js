@@ -1,5 +1,4 @@
 var parser = require('tap-parser');
-var through = require('through');
 
 module.exports = function (opts, cb) {
     if (typeof opts === 'function') {
@@ -26,7 +25,7 @@ module.exports = function (opts, cb) {
         check();
     });
     
-    p.on('results', function () {
+    p.on('complete', function () {
         if (finished) return;
         finish();
     });
@@ -42,7 +41,7 @@ module.exports = function (opts, cb) {
     function finish () {
         finished = true;
         
-        p.on('results', cb);
+        p.on('complete', cb);
         if (opts.wait && !ended) {
             setTimeout(function () { p.end() }, opts.wait);
         }

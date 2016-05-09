@@ -13,20 +13,14 @@ var lines = [
 ];
 
 test(function (t) {
-    t.plan(8);
+    t.plan(3);
     var done = false;
     
     var stream = finished({ wait: 250 }, function (results) {
         t.equal(done, true);
-        
-        t.equal(results.pass.length, 3);
-        t.equal(results.pass[0].ok, true);
-        t.equal(results.pass[1].ok, true);
-        t.equal(results.pass[2].ok, true);
-        t.equal(results.fail.length, 0);
-        
-        t.equal(results.errors.length, 1);
-        t.equal(results.ok, false);
+
+        t.equal(results.pass, 2);
+        t.equal(results.ok, true);
     });
     
     var iv = setInterval(function () {

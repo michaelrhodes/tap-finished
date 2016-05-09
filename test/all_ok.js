@@ -11,17 +11,13 @@ var lines = [
 ];
 
 test(function (t) {
-    t.plan(6);
+    t.plan(3);
     var done = false;
     
     var stream = finished({ wait: 0 }, function (results) {
         t.equal(done, false);
-        
-        t.equal(results.pass.length, 2);
-        t.equal(results.pass[0].ok, true);
-        t.equal(results.pass[1].ok, true);
-        t.equal(results.fail.length, 0);
-        
+
+        t.equal(results.pass, 2);
         t.ok(results.ok);
     });
     
